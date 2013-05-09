@@ -15,7 +15,7 @@
 	var FlickrPhotoView = Backbone.View.extend ({
 		// init view
 		GrabPhoto: function(){
-			console.log('GrabPhoto Is Sucessful');
+			console.log('GrabPhoto');
 		},
         LoadImages: function(){
 	var ShowImg = document.getElementById("ImageCarousel");
@@ -34,7 +34,7 @@
 			var ApiPics = new Array();
 			$.getJSON ("http://api.flickr.com/services/feeds/photos_public.gne?&tags=jamesandjen217&lang=en-us&format=json&jsoncallback=?")
 			.done(function (data){
-				console.log('Success Connection');
+			
 				$.each ( data.items, function (i, item) { $("#title").html(item.title);
 							$("#description").html(item.tags);
 							$("<img>").attr( { id: 'Api'+i, src: item.media.m } ).appendTo("#FlickrPhotoRotator");
