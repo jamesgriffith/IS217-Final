@@ -1,0 +1,162 @@
+      <head>
+      			<link rel="stylesheet" href="Style.css">
+      <title>This is our project IS217</title>
+     
+      </head>
+    
+    <center><body>
+ <div id="topdog">
+ <H1>IS 217 </h1>
+ <h2>BackBone.JS, JQuery, Javascript Image Slide Show</h2>
+ <h3>BY: Jennifer Soh, James Griffith</h3>
+			         <h1 id="title"></h1>
+			
+            <h2 id="description"></h2>
+            <div id="wrapper">
+                    <div id="ImageCarousel"></div>
+                  
+                   <div id="FlickrPhotoRotator">
+                
+                    </div>
+			</div>
+<p><a href="Http://www.github.com/JamesGriffith"><img src="http://lime.outlawgametools.com/wp-content/uploads/2012/06/gitHub-download-button.png"></a></p>
+</div>
+<div id="BreakDown">
+<h1>Script.js</h1>
+<p><textarea cols="50" rows="7" style="font-family:monospace">(function ($){
+		   
+
+	var FlickrPhoto = Backbone.Model.extend ({
+			PhotoModel: function(){
+		    console.log('after the model loads');
+		}
+	});
+	var FlickrPhotos = Backbone.Collection.extend({
+		model: FlickrPhoto,
+		FlickrPhotoCollection: function(){ 
+			console.log('after the collection loads');
+		}
+	});
+	var FlickrPhotoView = Backbone.View.extend ({
+		// init view
+		GrabPhoto: function(){
+			console.log('GrabPhoto Is Sucessful');
+		},
+        LoadImages: function(){
+	var ShowImg = document.getElementById("ImageCarousel");
+
+				for (var i = 1; i <= 5; i++){ var Img = document.createElement("img");
+				Img.setAttribute("id");
+				Img.setAttribute("style");
+				var Storage = new FlickrPhoto({id: i});
+				var PictureFrame = new FlickrPhotos([Storage]);
+				ShowImg.appendChild(Img);
+			} 
+			console.log('the flickr has finished the iimg');
+		}, 
+
+		LoadApiImg: function(){
+			var ApiPics = new Array();
+			$.getJSON ("http://api.flickr.com/services/feeds/photos_public.gne?&tags=jamesandjen217&lang=en-us&format=json&jsoncallback=?")
+			.done(function (data){
+				console.log('Success Connection');
+				$.each ( data.items, function (i, item) { $("#title").html(item.title);
+							$("#description").html(item.tags);
+							$("<img>").attr( { id: 'Api'+i, src: item.media.m } ).appendTo("#FlickrPhotoRotator");
+					if (i === 10) { 
+					return false; 
+	  		};
+	});
+});
+			},
+			FlickrAnimation: function(){ var MaxImages = 10; 
+			                             var MinImages = 0;
+
+			setInterval(function (){ $("#Api"+MinImages).hide("fade", {}), 1000;
+
+			 	if (MinImages == MaxImages){
+			 			MinImages = 0;
+			 		}else{
+					MinImages = MinImages + 1;
+			 		}
+			 }, 2000);
+		},
+
+	});
+	ImageRotator = new FlickrPhotoView;
+			 Pic = new FlickrPhoto;
+		    Pics = new FlickrPhotos;
+
+					   ImageRotator.GrabPhoto();
+					   Pic.PhotoModel();
+   				   	   Pics.FlickrPhotoCollection();
+					   ImageRotator.LoadImages();
+	                   ImageRotator.LoadApiImg();
+	                   ImageRotator.FlickrAnimation();
+})(jQuery);</textarea></p>
+<h1>Style.css</h1>
+<p><textarea cols="50" rows="7" style="font-family:monospace">body {
+background-color:#e9e9e9;
+
+
+}
+
+#topdog {
+font-family:Arial, Helvetica, sans-serif;
+}
+
+#topdog h1 {
+font-size:45px;
+}
+
+#topdog h2 {
+font-size:22px;
+}
+
+#topdog h3 {
+font-size:18px;
+font-style:italic;
+}
+#wrapper {
+height: 600px;
+width: 800px;
+background-repeat:no-repeat;
+background-image:url(TV.png);
+
+
+}
+
+#FlickrPhotoRotator {
+    height: 318px;
+    width: 480px;
+    overflow: hidden;
+	margin-top: 42px;
+}
+
+
+#FlickrPhotoRotator  img{
+    height: 318px;
+	width:  480px;
+	overflow: hidden;
+}
+
+#title {
+color:#000;
+
+}
+
+#description {
+color:#000;
+}</textarea></p>
+</div>
+
+	   
+	     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	     <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+	     <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
+	     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	     <script src="Script2.js"></script>
+    
+    </body>
+</html>
+</center>
