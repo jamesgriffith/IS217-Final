@@ -1,5 +1,7 @@
+      
+   <html>  
       <head>
-      			<link rel="stylesheet" href="Style.css">
+	<link rel="stylesheet" href="Style.css">
       <title>This is our project IS217</title>
      
       </head>
@@ -10,15 +12,14 @@
  <h2>BackBone.JS, JQuery, Javascript Image Slide Show</h2>
  <h3>BY: Jennifer Soh, James Griffith</h3>
 			         <h1 id="title"></h1>
+ <p><input type = "text" name="term" id="term" data-icon="search" type="text" placeholder="Enter search term."><button id="submit">Search</button></p>
 			
             <h2 id="description"></h2>
             <div id="wrapper">
                     <div id="ImageCarousel"></div>
                   
-                   <div id="FlickrPhotoRotator">
-                
-                    </div>
-			</div>
+                   <div id="FlickrPhotoRotator"></div>
+	</div>
 <p><a href="Http://www.github.com/JamesGriffith"><img src="http://lime.outlawgametools.com/wp-content/uploads/2012/06/gitHub-download-button.png"></a></p>
 </div>
 <div id="BreakDown">
@@ -45,7 +46,7 @@
         LoadImages: function(){
 	var ShowImg = document.getElementById("ImageCarousel");
 
-				for (var i = 1; i <= 5; i++){ var Img = document.createElement("img");
+				for (var i = 1; i <= 10; i++){ var Img = document.createElement("img");
 				Img.setAttribute("id");
 				Img.setAttribute("style");
 				var Storage = new FlickrPhoto({id: i});
@@ -157,6 +158,6 @@ color:#000;
 	     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 	     <script src="Script2.js"></script>
     
-    </body>
+    </body></center>
 </html>
-</center>
+
