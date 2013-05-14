@@ -1,9 +1,3 @@
-$(document).ready(function(){
-	$('#submit').click(function(){
-	var searchTerm = $("input#term").val()
-	});
-});
-
 var FlickrPhoto = Backbone.Model.extend ({
 	PhotoModel: function(){
 	}
@@ -38,7 +32,7 @@ var FlickrPhotoView = Backbone.View.extend ({
 		var Images = [];
 		var search = searchTerm;
 		var url = 'http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ee78f78cac9824c29b1837f737726a3b&text=' + search + '&per_page=15&page=1&format=json&nojsoncallback=1';
-			
+
 		$.getJSON (url, function (data){
 			$.each ( data.photos.photo, function (i, item) {
 			var imgSrc = "http://farm" + item.farm + ".staticflickr.com/" + item.server + "/" + item.id + "_" + item.secret + ".jpg";
@@ -79,3 +73,8 @@ ImageRotator.LoadImages();
 ImageRotator.LoadApiImg();
 ImageRotator.FlickrAnimation();
 
+$(document).ready(function(){
+	$('#submit').click(function(){
+	var searchTerm = $("input#term").val()
+	});
+});
